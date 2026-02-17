@@ -1,4 +1,4 @@
-package Pages;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,11 +7,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends BasePage {
     private By avatarIcon = By.xpath("//img[@class='avatar']");
-    public By createPlayListButton = By.cssSelector("i[data-testid='sidebar-create-playlist-btn']");
-    public By simplePlayListOption = By.cssSelector("li[data-testid='playlist-context-menu-create-simple']");
-    public By playListNameInputFiled = By.cssSelector(".create input[name='name']");
-    public By renamePlayListInputFiled = By.cssSelector("[data-testid='inline-playlist-name-input']");
-    public By succesShow = By.xpath("//div[@class='success show']");
+    private By createPlayListButton = By.cssSelector("i[data-testid='sidebar-create-playlist-btn']");
+    private By simplePlayListOption = By.cssSelector("li[data-testid='playlist-context-menu-create-simple']");
+    private By playListNameInputFiled = By.cssSelector(".create input[name='name']");
+    private By renamePlayListInputFiled = By.cssSelector("[data-testid='inline-playlist-name-input']");
+    private By succesShow = By.xpath("//div[@class='success show']");
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -22,8 +22,8 @@ public class HomePage extends BasePage {
     }
 
     public HomePage createPlaylist(String playListName) {
-        findElement(createPlayListButton).click();
-        findElement(simplePlayListOption).click();
+        click(createPlayListButton);
+        click(simplePlayListOption);
         typeAndSubmit(playListNameInputFiled, playListName);
         return this;
     }
@@ -42,6 +42,7 @@ public class HomePage extends BasePage {
                 .xpath("//a[contains(text(), '" + playListName + "')]"))).perform();
         findElement(By
                 .xpath("//li[contains(text(), 'Delete')]")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(succesShow));
 
         return this;
     }
@@ -60,5 +61,8 @@ public class HomePage extends BasePage {
     public boolean isPlayListDisplayed(String name) {
         By playlist = By.xpath("//a[contains(text(),'" + name + "')]");
         return findElement(playlist).isDisplayed();
+    }
+    public PlayerPage getPlayer(){
+        return new PlayerPage(driver);
     }
 }

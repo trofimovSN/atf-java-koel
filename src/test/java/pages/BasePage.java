@@ -1,4 +1,4 @@
-package Pages;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -19,6 +19,12 @@ public class BasePage {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         this.actions = new Actions(driver);
+    }
+    public void click(By locator) {
+        findElement(locator).click();
+    }
+    public void doubleClick(By locator) {
+        actions.doubleClick(findElement(locator)).perform();
     }
 
     protected WebElement findElement(By locator) {

@@ -1,5 +1,5 @@
-import Pages.HomePage;
-import Pages.LoginPage;
+import pages.HomePage;
+import pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,7 +11,7 @@ public class Homework21 extends BaseTest {
         String updatedPlayListName = "playListRenamed";
         HomePage homePage = new LoginPage(driver)
                 .openPage()
-                .login(validEmail, validPassword);
+                .loginAsValidUser();
         homePage
                 .createPlaylist(playListName)
                 .renamePlaylist(playListName, updatedPlayListName);

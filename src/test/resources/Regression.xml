@@ -6,8 +6,8 @@
     <test name="Regression Test" preserve-order="false">
         <classes>
 <!--            <class name="LoginTests"/>-->
-            <class name="Homework21"/>
-<!--            <class name="Homework18"/>-->
+<!--            <class name="Homework21"/>-->
+            <class name="PlayerTests"/>
 <!--            <class name="ProfilePageTest" />-->
         </classes>
     </test>

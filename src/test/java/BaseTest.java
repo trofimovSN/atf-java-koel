@@ -18,9 +18,8 @@ public class BaseTest {
     public WebDriver driver;
     public WebDriverWait wait;
     protected Actions actions;
-//    public String url = "https://qa.koel.app/";
-    protected static String validEmail = "sergei.trofimov@testpro.io";
-    protected static String validPassword = "uIIgWoYu";
+
+
 
     @BeforeSuite
     static void setupClass() {
@@ -46,8 +45,6 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         actions = new Actions(driver);
-//        url = BaseURL;
-//        navigatingToPage();
     }
 
 
@@ -56,25 +53,6 @@ public class BaseTest {
         driver.quit();
     }
 
-//    protected void clickSubmit() {
-//        WebElement submitButton = wait.until(ExpectedConditions.visibilityOfElementLocated(
-//                By.cssSelector("button[type='submit']")));
-//        submitButton.click();
-//    }
-
-//    protected void providePassword(String password) {
-//        WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='password']")));
-//        passwordField.clear();
-//        passwordField.sendKeys(password);
-//    }
-//
-//    protected void provideEmail(String email) {
-//        WebElement emailField = wait.until(ExpectedConditions
-//                .visibilityOfElementLocated(By.cssSelector("input[type='email']")));
-//        emailField.clear();
-//        emailField.sendKeys(email);
-//    }
-
     protected void clickOnAvatarIcon() {
 
         WebElement avatarIcon = wait.until(ExpectedConditions
@@ -82,10 +60,6 @@ public class BaseTest {
         avatarIcon.click();
 
     }
-
-//    protected void navigatingToPage() {
-//        driver.get(url);
-//    }
 
     public String generateRandomName() {
         return UUID.randomUUID().toString().replaceAll("-", "").substring(0, 5);

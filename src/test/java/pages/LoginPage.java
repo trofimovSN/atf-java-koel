@@ -1,10 +1,11 @@
-package Pages;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import utils.ConfigReader;
 
 public class LoginPage extends BasePage {
-    private String url = "https://qa.koel.app/";
+    private String url = ConfigReader.getProperty("base.url");
     private By emailField = By.cssSelector("input[type='email']");
     private By passwordField = By.cssSelector("input[type='password']");
     private By submitButton = By.cssSelector("button[type='submit']");
@@ -19,27 +20,41 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public void provideEmail(String email) {
-        findElement(emailField).sendKeys(email);
+    public HomePage loginAsValidUser() {
+        return login(ConfigReader.getProperty("user.email"),
+                ConfigReader.getProperty("user.password"));
     }
 
-    public void providePassword(String password) {
+    ;
+
+    public LoginPage provideEmail(String email) {
+        findElement(emailField).sendKeys(email);
+        return this;
+    }
+
+    public LoginPage providePassword(String password) {
         findElement(passwordField).sendKeys(password);
+        return this;
     }
 
     public void clickSubmitButton() {
-        findElement(submitButton).click();
+        click(submitButton);
     }
 
     public void clickRegistrationButton() {
-        findElement(registrationButton).click();
+        click(registrationButton);
     }
 
     public HomePage login(String email, String password) {
-        findElement(emailField).sendKeys(email);
-        findElement(passwordField).sendKeys(password);
-        findElement(submitButton).click();
+        provideEmail(email);
+        providePassword(password);
+        clickSubmitButton();
+
         return new HomePage(driver);
+    }
+    public boolean isLoginPageDisplayed() {
+        return driver.getCurrentUrl()
+                .equals(ConfigReader.getProperty("base.url"));
     }
 
 }
