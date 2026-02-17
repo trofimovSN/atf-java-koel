@@ -1,7 +1,7 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
-import pages.PlayerPage;
+import pages.PlayerComponent;
 
 public class PlayerTests extends BaseTest {
     @Test
@@ -30,12 +30,12 @@ public class PlayerTests extends BaseTest {
 //
     @Test
     public void hoverCheck() {
-        PlayerPage playerPage = new LoginPage(driver)
+        PlayerComponent playerComponent = new LoginPage(driver)
                 .openPage()
                 .loginAsValidUser()
                 .getPlayer();
-playerPage.hoverPlayButton();
-String playButtonTooltip = playerPage.isPlayPauseButtonDisplayed();
+playerComponent.hoverPlayButton();
+String playButtonTooltip = playerComponent.getPlayButtonTitle();
         Assert.assertEquals(playButtonTooltip, "Play or resume");
     }
 

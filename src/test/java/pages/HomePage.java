@@ -62,7 +62,7 @@ public class HomePage extends BasePage {
         By playlist = By.xpath("//a[contains(text(),'" + name + "')]");
         return findElement(playlist).isDisplayed();
     }
-    public PlayerPage getPlayer(){
-        return new PlayerPage(driver);
+    public PlayerComponent getPlayer(){
+        return new PlayerComponent(driver);
     }
 }

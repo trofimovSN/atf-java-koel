@@ -1,18 +1,25 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import utils.ConfigReader;
 
 public class LoginPage extends BasePage {
     private String url = ConfigReader.getProperty("base.url");
-    private By emailField = By.cssSelector("input[type='email']");
-    private By passwordField = By.cssSelector("input[type='password']");
-    private By submitButton = By.cssSelector("button[type='submit']");
-    private By registrationButton = By.cssSelector("a[href='registration']");
+    @FindBy(css = "input[type='email']")
+    private WebElement emailField;
+    @FindBy(css = "input[type='password']")
+    private WebElement passwordField;
+    @FindBy(css = "button[type='submit']")
+    private WebElement submitButton;
+    @FindBy(css = "a[href='registration']")
+    private WebElement registrationButton;
 
     public LoginPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
     public LoginPage openPage() {
@@ -25,24 +32,22 @@ public class LoginPage extends BasePage {
                 ConfigReader.getProperty("user.password"));
     }
 
-    ;
-
     public LoginPage provideEmail(String email) {
-        findElement(emailField).sendKeys(email);
+        emailField.sendKeys(email);
         return this;
     }
 
     public LoginPage providePassword(String password) {
-        findElement(passwordField).sendKeys(password);
+        passwordField.sendKeys(password);
         return this;
     }
 
     public void clickSubmitButton() {
-        click(submitButton);
+        submitButton.click();
     }
 
     public void clickRegistrationButton() {
-        click(registrationButton);
+        registrationButton.click();
     }
 
     public HomePage login(String email, String password) {
@@ -52,9 +57,9 @@ public class LoginPage extends BasePage {
 
         return new HomePage(driver);
     }
+
     public boolean isLoginPageDisplayed() {
         return driver.getCurrentUrl()
                 .equals(ConfigReader.getProperty("base.url"));
     }
-
 }

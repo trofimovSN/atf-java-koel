@@ -9,7 +9,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import utils.ConfigReader;
 
 import java.time.Duration;
 import java.util.UUID;
@@ -20,28 +23,21 @@ public class BaseTest {
     protected Actions actions;
 
 
-
     @BeforeSuite
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
 
     @BeforeMethod
-    @Parameters({"BaseURL", "headLess"})
-    public void launchBrowser(String BaseURL, @Optional("false") String headLess) {
+    public void launchBrowser() {
+        String url = ConfigReader.getProperty("base.url");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-        if (headLess.equalsIgnoreCase("true")) {
-            options.addArguments("--headless=new");
-            options.addArguments("--window-size=1920,1080");
-        } else {
-            options.addArguments("--start-maximized");
-        }
+        options.addArguments("--start-maximized");
         options.addArguments("--disable-notifications");
         options.addArguments("--disable-infobars");
 
         driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         actions = new Actions(driver);

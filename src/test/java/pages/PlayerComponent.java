@@ -5,18 +5,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class PlayerPage extends BasePage {
+public class PlayerComponent extends BasePage {
     private By playPauseButton = By.cssSelector("span[data-testid='play-btn']");
-    public PlayerPage(WebDriver driver) {
+    public PlayerComponent(WebDriver driver) {
         super(driver);
     }
-    public PlayerPage hoverPlayButton() {
+    public PlayerComponent hoverPlayButton() {
         WebElement playButton = driver.findElement(playPauseButton);
         actions.moveToElement(playButton).perform();
         return this;
     }
-    public String isPlayPauseButtonDisplayed() {
+    public String getPlayButtonTitle() {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(playPauseButton))
                 .getAttribute("title");
     }
+
 }
