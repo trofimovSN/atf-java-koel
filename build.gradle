@@ -35,8 +35,8 @@ test {
 //    }
 //}
 //
-//tasks.register('Regression', Test) {
-//    useTestNG() {
-//        suites "src/test/resources/Regression.xml"
-//    }
-//}
+tasks.register('Regression', Test) {
+    useTestNG() {
+        suites "src/test/resources/Regression.xml"
+    }
+}

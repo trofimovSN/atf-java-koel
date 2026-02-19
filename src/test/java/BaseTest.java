@@ -184,6 +184,7 @@ public class BaseTest {
                 ieOptions.introduceFlakinessByIgnoringSecurityDomains();
                 ieOptions.ignoreZoomSettings();
                 driver = new RemoteWebDriver(URI.create(gridURL).toURL(), ieOptions);
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
             default:
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();

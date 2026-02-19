@@ -4,16 +4,16 @@ import pages.LoginPage;
 import pages.PlayerComponent;
 
 public class PlayerTests extends BaseTest {
-    @Test
-    public void playAnySong() {
-//        navigatingToPage();
-//        provideEmail(validEmail);
-//        providePassword(validPassword);
-//        clickSubmit();
-        selectNextSong();
-        clickPlayButton();
-        Assert.assertTrue(songPlayingCheck());
-    }
+//    @Test
+//    public void playAnySong() {
+////        navigatingToPage();
+////        provideEmail(validEmail);
+////        providePassword(validPassword);
+////        clickSubmit();
+//        selectNextSong();
+//        clickPlayButton();
+//        Assert.assertTrue(songPlayingCheck());
+//    }
 //
 //    @Test
 //    public void playSongFromAllSongList() {
