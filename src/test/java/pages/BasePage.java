@@ -34,7 +34,7 @@ public class BasePage {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    public String getPageUrl () {
+    public String getPageUrl() {
         return driver.getCurrentUrl();
     }
 
@@ -54,6 +54,7 @@ public class BasePage {
         element.sendKeys(text);
         element.sendKeys(Keys.ENTER);
     }
+
     protected void waitInvisibilityOfSuccess() {
         try {
             WebElement clickToClose = driver.findElement(By.xpath("//div[@class='success show']"));
@@ -63,12 +64,12 @@ public class BasePage {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(
                 By.xpath("//div[@class='success show']")));
     }
-//    protected WebElement checkSuccess() {
-//
-//        WebElement noticeMessage = wait.until(ExpectedConditions.visibilityOfElementLocated
-//                (By.xpath("//div[@class='success show']")));
-//        Assert.assertTrue(noticeMessage.isDisplayed());
-//        return noticeMessage;
+
+//    protected WebElement checkSuccessMessage() { //doesn`t work yet
+//        WebElement successMessage = wait.until(ExpectedConditions
+//                .visibilityOfElementLocated(By
+//                        .xpath("//div[@class='success show']")));
+//        return successMessage;
 //    }
 
 }

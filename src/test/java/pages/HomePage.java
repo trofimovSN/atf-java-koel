@@ -5,12 +5,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends BasePage {
-    private By avatarIcon = By.xpath("//img[@class='avatar']");
+    private By avatarIcon = By.xpath("//a[@data-testid='view-profile-link']");
     private By createPlayListButton = By.cssSelector("i[data-testid='sidebar-create-playlist-btn']");
     private By simplePlayListOption = By.cssSelector("li[data-testid='playlist-context-menu-create-simple']");
     private By playListNameInputFiled = By.cssSelector(".create input[name='name']");
     private By renamePlayListInputFiled = By.cssSelector("[data-testid='inline-playlist-name-input']");
     private By succesShow = By.xpath("//div[@class='success show']");
+    private By AvatarIcon;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -78,8 +79,14 @@ public class HomePage extends BasePage {
         By playlist = By.xpath("//a[contains(text(),'" + name + "')]");
         return findElement(playlist).isDisplayed();
     }
-    public PlayerComponent getPlayer(){
+
+    public PlayerComponent getPlayer() {
         return new PlayerComponent(driver);
+    }
+
+    public ProfilePage getProfile() {
+        click(avatarIcon);
+        return new ProfilePage(driver);
     }
 
 //    protected void deletePlaylist(String playListName) {

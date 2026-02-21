@@ -23,6 +23,7 @@ public class BaseTest {
     public WebDriver driver;
     public WebDriverWait wait;
     protected Actions actions;
+//    private static final ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
 
 
     @BeforeSuite
