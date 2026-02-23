@@ -17,11 +17,11 @@ dependencies {
 
 test {
     useTestNG() {
-        def suiteFile = System.getProperty('suiteXmlFile')
-        if (suiteFile != null && !suiteFile.isEmpty()) {
-            suites suiteFile
+        def suiteName = System.getProperty('suite','Regression')
+//        if (suiteFile != null && !suiteFile.isEmpty()) {
+            suites "src/test/resources/${suiteName}.xml"
         }
-        systemProperty "browser", System.getProperty("browser")
+        systemProperty "browser", System.getProperty("browser", "chrome")
     }
 //        suites "src/test/resources/TestNG.xml"
 //        systemProperty "browser", System.getProperty("browser")
