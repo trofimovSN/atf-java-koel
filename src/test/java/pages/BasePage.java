@@ -86,6 +86,7 @@ public class BasePage {
                         .xpath("//div[@class='success show']")));
         return successMessage;
     }
+
     public void selectDropDown(By locator, String text) {
                 WebElement selectField = wait.until(ExpectedConditions.elementToBeClickable(findElement(locator)));
         Select select = new Select(selectField);

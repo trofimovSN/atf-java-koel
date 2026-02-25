@@ -35,6 +35,7 @@ public class ProfilePage extends BasePage {
     }
     public ProfilePage clickSaveButton() {
         click(saveButton);
+        successMessage();
         return this;
     }
     public String getProfileName() {
