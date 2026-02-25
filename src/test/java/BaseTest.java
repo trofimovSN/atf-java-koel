@@ -41,7 +41,6 @@ public class BaseTest {
         actions = new Actions(getDriver());
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         navigateToPage();
-//        WebDriverManager.chromedriver().setup(); //???
     }
 
     public void navigateToPage() {
@@ -62,7 +61,6 @@ public class BaseTest {
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
                 FirefoxOptions ffOptions = new FirefoxOptions();
-                ffOptions.addArguments("--headless");
                 ffOptions.addArguments("--width=1920");
                 ffOptions.addArguments("--height=1080");
                 ffOptions.addPreference("dom.webnotifications.enabled", false);
@@ -78,7 +76,7 @@ public class BaseTest {
             case "grid-firefox":
                 caps.setCapability("browserName", "firefox");
                 FirefoxOptions ffGridOptions = new FirefoxOptions();
-                ffGridOptions.addArguments("-headless", "--width=1920", "--height=1080");
+                ffGridOptions.addArguments("--width=1920", "--height=1080");
                 ffGridOptions.merge(caps);
                 return new RemoteWebDriver(URI.create(gridURL).toURL(), ffGridOptions);
             case "grid-chrome":

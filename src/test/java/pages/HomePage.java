@@ -50,6 +50,7 @@ public class HomePage extends BasePage {
         click(saveButton);
         return this;
     }
+
     public HomePage deleteSmartPL(String playListName) {
         waitInvisibilityOfSuccess();
         actions.contextClick(findElement(By
@@ -144,7 +145,7 @@ public class HomePage extends BasePage {
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(
                     By.xpath("//a[contains(text(),'" + name + "')]")));
-            return  true;
+            return true;
         } catch (TimeoutException e) {
             return false;
         }
